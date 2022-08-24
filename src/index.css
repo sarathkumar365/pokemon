@@ -126,6 +126,8 @@ body {
 
 .game-container {
   padding: 1.5em 6em;
+
+  background-color: #EAF6F6;
 }
 
 .pokemon-container {
@@ -161,4 +163,38 @@ body {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
+}
+
+.matchwon-container{
+  padding: 10em 6em;
+
+  display: flex;
+  flex-direction: column;
+  gap:2em;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Pokemon';
+  letter-spacing: .5em;
+  font-size: 1.5em;  
+
+}
+
+
+.play-again{
+  letter-spacing:2px ;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border: 1px solid  purple;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.2em;
+
+  transition: .25s background-color ease-in-out;
+}
+
+.play-again:hover{
+  background-color: black;
+  color: white;
+  
 }

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import pokemonContext from '../context/pokemonContext'
 
 function NavbarComp() {
+
+  const { gameReset } = useContext(pokemonContext)
+
   return (
         <>
           <div className="navbar-container">
               <h1>Pokemon</h1>
-              <p className='game-bttn'>Dummy button</p>
+              <p onClick={() => gameReset()} className='game-bttn'>Reset Game</p>
             </div>
         </>
     )

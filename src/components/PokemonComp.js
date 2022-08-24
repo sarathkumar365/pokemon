@@ -5,7 +5,8 @@ import pokemonContext from '../context/pokemonContext'
 
 function PokemonComp(props) {
 
-  const { pokemonArray, clicked } = useContext(pokemonContext)
+  const { clicked } = useContext(pokemonContext)
+
 
   return (
       <>
