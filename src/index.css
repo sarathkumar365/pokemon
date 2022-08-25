@@ -127,7 +127,7 @@ body {
 .game-container {
   padding: 1.5em 6em;
 
-  background-color: #EAF6F6;
+  background-color: #EAF6F6 ;
 }
 
 .pokemon-container {
@@ -144,7 +144,7 @@ body {
   /* width: 11em;
   height: 11em; */
 
-  background-color: white;
+  background-color: black;
 
   border-radius: .5em;
 
