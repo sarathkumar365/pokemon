@@ -53,12 +53,10 @@ function PokemonComp(props) {
       <div onClick={() => {
          clicked(props.data.id)
       }
-      }
-        
-        // className={flipped ? 'card flipped' : 'card'}>
+      }        
         className={props.data.matchFound ? 'card flipped' : props.data.clicked ? 'card flipped' : 'card' }>
         <div style={frontStyle} className="card-front"></div>
-        <div style={backtStyle} className="card-back"></div>
+        <div style={backtStyle} className="card-back">{ props.data.name}</div>
       </div>
     </>
   )
