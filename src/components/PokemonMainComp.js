@@ -154,7 +154,6 @@ function PokemonMainComp() {
 
     // 4. check if the game is won (all matchFound = TRUE)
     matchWonFinder()
-
     
     
   }
@@ -175,7 +174,6 @@ function PokemonMainComp() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetGame])
 
-console.log(pokemonArray);
   const value = { pokemonArray, setPokemonArray, clicked, gameReset }
 
     return (

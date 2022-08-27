@@ -5,7 +5,6 @@ import pokemonContext from '../context/pokemonContext'
 
 function PokemonComp(props) {
 
-
   const { clicked } = useContext(pokemonContext)
 
   const colors = {
@@ -45,8 +44,7 @@ function PokemonComp(props) {
       backgroundRepeat: 'no-repeat',
       backgroundColor: `${color}`,
     
-  }
-
+  }   
 
   return (
     <>
