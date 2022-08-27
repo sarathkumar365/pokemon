@@ -14,11 +14,19 @@ function GameComp() {
   return (
     <div className="game-container">
       <div className="pokemon-container">
-        {/* < PokemonComp  />         */}
-        {pokemonArrays}
+       {pokemonArrays}
       </div>
     </div>
     )
+
+  // return (
+  //   <div className="game-container">
+  //     <div className="pokemon-container">
+  //       {/* < PokemonComp  />         */}
+  //       {pokemonArrays}
+  //     </div>
+  //   </div>
+  //   )
 }
 
 export default GameComp

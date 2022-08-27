@@ -45,6 +45,7 @@ function PokemonMainComp() {
           name: data.data.name,
           id: nanoid(),
           images: data.data.sprites,
+          types:data.data.types,
           clicked: false,
           matchFound: false
         }
@@ -139,7 +140,7 @@ function PokemonMainComp() {
 
     // 1. find out which pokemon is clicked 
     const clickedPokemons = pokemonArray.map(el => {
-      if (el.id === id) el.clicked = true
+      if (el.id === id) el.clicked = !el.clicked
       return el
     })
     // update the pokemon list
@@ -153,6 +154,9 @@ function PokemonMainComp() {
 
     // 4. check if the game is won (all matchFound = TRUE)
     matchWonFinder()
+
+    
+    
   }
 
   function gameReset  () {
@@ -160,7 +164,6 @@ function PokemonMainComp() {
     setResetGame(true)
     
   }
-
 
   useEffect(() => {
     loadPokemonData()
@@ -172,7 +175,7 @@ function PokemonMainComp() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetGame])
 
-
+console.log(pokemonArray);
   const value = { pokemonArray, setPokemonArray, clicked, gameReset }
 
     return (
@@ -187,16 +190,6 @@ function PokemonMainComp() {
     
   )
   
-
-  // return (
-  //   <>
-  //     < Navbar />
-  //     <pokemonContext.Provider value={value}>
-  //       <Game />
-  //     </pokemonContext.Provider>
-  //   </>
-    
-  // )
 }
 
 export default PokemonMainComp
