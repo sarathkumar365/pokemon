@@ -42,8 +42,9 @@ function PokemonComp(props) {
       })` ,
       backgroundPosition:'center',
       backgroundRepeat: 'no-repeat',
-      backgroundColor: `${color}`,
-    
+      // backgroundColor: `${color}`,
+      backgroundColor: `${props.data.clicked ? color : 'black'}`,
+
   }   
 
   return (
