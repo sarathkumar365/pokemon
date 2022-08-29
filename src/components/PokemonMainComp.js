@@ -154,9 +154,9 @@ function PokemonMainComp() {
 
     // 4. check if the game is won (all matchFound = TRUE)
     matchWonFinder()
-    
-    
   }
+  
+  console.log(pokemonArray);
 
   function gameReset  () {
     // 1. set resetGame state to true
