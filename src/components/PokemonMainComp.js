@@ -11,7 +11,7 @@ import MatchWonComp from './matchWon'
 function PokemonMainComp() {
 
   const [pokemonArray, setPokemonArray] = useState([])
-  const [matchWon, setMatchWon] = useState(null)
+  const [matchWon, setMatchWon] = useState(false)
   const [resetGame,setResetGame] = useState(false)
 
   //shuffling algo from Fisher-Yates(aka Knuth)
@@ -122,27 +122,15 @@ function PokemonMainComp() {
 
     setPokemonArray(clickedResetArray)
   }
-
-  const matchWonFinder = () => {
-    let matchWon = null
-    pokemonArray.forEach(el => {
-      if (!el.matchFound) {
-        matchWon = false
-      } else {
-        matchWon = true
-      }
-    })
-
-    if(matchWon) setMatchWon(matchWon)
-  }
   
   const clicked = (id) => {
-
     // 1. find out which pokemon is clicked 
     const clickedPokemons = pokemonArray.map(el => {
       if (el.id === id) el.clicked = !el.clicked
       return el
     })
+
+
     // update the pokemon list
     setPokemonArray(clickedPokemons)
 
@@ -153,11 +141,13 @@ function PokemonMainComp() {
     flipBack(id)
 
     // 4. check if the game is won (all matchFound = TRUE)
-    matchWonFinder()
+    const wonOrNot = pokemonArray.every(el => {
+      if (el.matchFound === true) return true
+      return false
+    })
+    if (wonOrNot) setMatchWon((oldVal) => true)
   }
   
-  console.log(pokemonArray);
-
   function gameReset  () {
     // 1. set resetGame state to true
     setResetGame(true)
