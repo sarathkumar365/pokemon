@@ -145,7 +145,11 @@ function PokemonMainComp() {
       if (el.matchFound === true) return true
       return false
     })
-    if (wonOrNot) setMatchWon((oldVal) => true)
+    if (wonOrNot) {
+      setTimeout(() => {
+        setMatchWon(true)
+      },1500)
+    }
   }
   
   function gameReset  () {
