@@ -19,14 +19,6 @@ function GameComp() {
     </div>
     )
 
-  // return (
-  //   <div className="game-container">
-  //     <div className="pokemon-container">
-  //       {/* < PokemonComp  />         */}
-  //       {pokemonArrays}
-  //     </div>
-  //   </div>
-  //   )
 }
 
 export default GameComp
