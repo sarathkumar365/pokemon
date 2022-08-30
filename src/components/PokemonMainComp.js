@@ -168,6 +168,8 @@ function PokemonMainComp() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetGame])
 
+  console.log('gaem launched');
+
   const value = { pokemonArray, setPokemonArray, clicked, gameReset }
 
     return (
