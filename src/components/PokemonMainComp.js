@@ -12,7 +12,8 @@ function PokemonMainComp() {
 
   const [pokemonArray, setPokemonArray] = useState([])
   const [matchWon, setMatchWon] = useState(false)
-  const [resetGame,setResetGame] = useState(false)
+  const [resetGame, setResetGame] = useState(false)
+  const [moves,setMoves] = useState(0)
 
   //shuffling algo from Fisher-Yates(aka Knuth)
   function shuffle(array) {
@@ -35,26 +36,53 @@ function PokemonMainComp() {
 
   // creating a pokemon collection with 8 unique pokemons
   const loadPokemonData = async () => {
+
+    // generate 8 random nums
+    let random8arrays = new Set([])
+
+    function randomIntFromInterval(min, max) { // min and max included 
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+    
+    for (let i = 1; i < 9; i++) {
+      random8arrays.add( randomIntFromInterval(1, 150) )  
+    }
+    
+    const checkRandomGeneratedArray = ()=>{
+      if (random8arrays.size === 8) {
+        return
+      } else {
+        random8arrays.clear()
+        for (let i = 1; i < 9; i++) {
+          random8arrays.add( randomIntFromInterval(1, 150) )  
+        }
+      }
+    } 
+
+    checkRandomGeneratedArray()
     
     let pokemonDataArray1 = []
-    for (let i = 1; i <= 8; i++) {
-      const data = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-      // pokemonDataArray1.push(data.data)
-      pokemonDataArray1.push(
-        {
-          name: data.data.name,
-          id: nanoid(),
-          images: data.data.sprites,
-          types:data.data.types,
-          clicked: false,
-          matchFound: false
-        }
-        )
-        
+
+    for (let i of random8arrays) {
+        const data = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+       
+            pokemonDataArray1.push(
+            {
+              name: data.data.name,
+              id: nanoid(),
+              images: data.data.sprites,
+              types:data.data.types,
+              clicked: false,
+              matchFound: false
+            }
+            )
     }
+
     // creating a copy of pokemonDataArray1 and combining them together
     // then scrambling the contents of the combiled array to get an
     // array of 8 pokemons repeated twice at diff.positions and settitng it to state
+
+    
     const pokemonDataArray2 = pokemonDataArray1.map(el => {
       el = {
         ...el,
@@ -62,12 +90,13 @@ function PokemonMainComp() {
       }
       return el
     })
+
+
     const completePokemonArray = pokemonDataArray1.concat(pokemonDataArray2)
     const shuffledPokemonArr = shuffle(completePokemonArray)
     
     setPokemonArray(shuffledPokemonArr)
   }
-  
   
 
   const matchFound = (pokeId) => {
@@ -124,6 +153,9 @@ function PokemonMainComp() {
   }
   
   const clicked = (id) => {
+
+    // 0. increase the moves
+    setMoves(oldVal => oldVal + 1)
     // 1. find out which pokemon is clicked 
     const clickedPokemons = pokemonArray.map(el => {
       if (el.id === id) el.clicked = !el.clicked
@@ -164,11 +196,12 @@ function PokemonMainComp() {
     return () => {
       setMatchWon(null)
       setResetGame(false)
+      setMoves(0)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetGame])
 
-  const value = { pokemonArray, setPokemonArray, clicked, gameReset }
+  const value = { pokemonArray, setPokemonArray, clicked, gameReset,moves,setMoves }
 
     return (
     <>

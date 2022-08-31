@@ -94,7 +94,7 @@ body {
 
 .navbar-container {
   display:flex;
-  gap: 50em;
+  gap: 40em;
   
   justify-content:space-evenly;
   align-items: center;
@@ -102,6 +102,42 @@ body {
   padding: 2em 4em;
 }
 
+.nav-right {
+  display:flex;
+  gap:5em;
+  justify-content:center;
+  align-items: center;
+}
+
+.nav-right > p:first-child{
+  font-family: 'Pokemon';
+  font-size: 1.6em;
+
+  opacity: .8;
+  
+  width:150px
+}
+
+.nav-right > p > span{
+  font-size: .7em;
+  font-weight: 200;
+}
+
+.nav-right > p:first-child {
+  animation: fade 2s infinite;
+}
+
+@keyframes fade {
+ 50% {
+  opacity: 0%;
+ }
+
+ 100% {
+  opacity: 100%;
+
+ }
+}
+ 
 .navbar-container > h1 {
   font-family: 'Pokemon';
   letter-spacing: 0.2em;
@@ -211,17 +247,18 @@ body {
   align-items: center;
 
   transform-style: preserve-3d;
-  transition: transform 1.4s;
+  transition: transform 1.4s,box-shadow .5s;
 
   position: relative;
 
   perspective: 1000px;
+
 }
 
 .card:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
-   rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   cursor: pointer;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+
   }
 
 .flipped {
