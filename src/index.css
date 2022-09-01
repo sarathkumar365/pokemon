@@ -95,7 +95,7 @@ body {
   background-color: #EAF6F6;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:400px) {
   body::after {
     
     content: 'switch to desktop view to play the game';
@@ -115,7 +115,7 @@ body {
   
   padding: 2em 4em;
 }
-@media screen and (max-width:1000px) {
+@media screen and (max-width:400px) {
   .navbar-container {
     display: none;
   }
@@ -185,7 +185,7 @@ body {
   background-color: #EAF6F6 ;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:400px) {
   .game-container {
     display: none;
   }
