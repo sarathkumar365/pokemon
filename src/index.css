@@ -68,7 +68,7 @@ select {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+   scroll-behavior: auto; 
   }
   
   *,
@@ -86,12 +86,23 @@ select {
 
 /* styles */
 
+
 body {
   display:flex; 
   flex-direction: column;
   justify-content:space-between;
   align-items: center;
   background-color: #EAF6F6;
+}
+
+@media screen and (max-width:1000px) {
+  body::after {
+    
+    content: 'switch to desktop view to play the game';
+    font-family: 'inter';
+    padding: 50% 10px;
+
+  }
 }
 
 
@@ -101,25 +112,13 @@ body {
   
   justify-content:space-evenly;
   align-items: center;
-
+  
   padding: 2em 4em;
 }
-
-/* Extra small devices (phones, 600px and down) */
-@media screen  and (max-width: 700px) {
+@media screen and (max-width:1000px) {
   .navbar-container {
-    display: flex;
-   gap: 85px;
-   justify-content: space-evenly;
-   align-items: center;
-   padding: 5px 10px; 
- }
-}
-
-@media screen and (max-width: 700px) {
-  .navbar-container > h1 {
-    font-size: 20px;
-   }
+    display: none;
+  }
 }
 
 .nav-right {
@@ -186,13 +185,12 @@ body {
   background-color: #EAF6F6 ;
 }
 
-@media screen  and (max-width: 700px) {
+@media screen and (max-width:1000px) {
   .game-container {
-    padding: 10px 20px;
-
-    background-color: #EAF6F6 ;
- }
+    display: none;
+  }
 }
+
 
 .pokemon-container {
   display: grid;
