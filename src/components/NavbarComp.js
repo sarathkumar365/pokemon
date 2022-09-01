@@ -10,7 +10,7 @@ function NavbarComp() {
           <div className="navbar-container">
             <h1>Pokemon</h1>
               <div className="nav-right">
-              <p>{ moves} {moves ? <span>moves</span> : ''} </p>
+              <p>{moves !== 0 ? moves : ''} {moves ? <span>moves</span> : ''} </p>
               <p onClick={() => gameReset()} className='game-bttn'>Reset Game</p>
             </div>
             </div>
