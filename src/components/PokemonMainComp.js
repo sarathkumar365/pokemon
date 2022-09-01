@@ -6,6 +6,7 @@ import pokemonContext from '../context/pokemonContext'
  import Navbar from "./NavbarComp"
 import Game from "./GameComp"
 import MatchWonComp from './matchWon'
+import LoaderComp from './loaderComp'
  
  
 function PokemonMainComp() {
@@ -13,7 +14,8 @@ function PokemonMainComp() {
   const [pokemonArray, setPokemonArray] = useState([])
   const [matchWon, setMatchWon] = useState(false)
   const [resetGame, setResetGame] = useState(false)
-  const [moves,setMoves] = useState(0)
+  const [moves, setMoves] = useState(0)
+  const [isLoading,setIsLoading] = useState(true)
 
   //shuffling algo from Fisher-Yates(aka Knuth)
   function shuffle(array) {
@@ -58,7 +60,6 @@ function PokemonMainComp() {
         }
       }
     } 
-
     checkRandomGeneratedArray()
     
     let pokemonDataArray1 = []
@@ -96,6 +97,8 @@ function PokemonMainComp() {
     const shuffledPokemonArr = shuffle(completePokemonArray)
     
     setPokemonArray(shuffledPokemonArr)
+    setIsLoading(false)
+
   }
   
 
@@ -201,19 +204,33 @@ function PokemonMainComp() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetGame])
 
-  const value = { pokemonArray, setPokemonArray, clicked, gameReset,moves,setMoves }
+  console.log(isLoading);
 
-    return (
+  const value = { pokemonArray, setPokemonArray, clicked, gameReset, moves, setMoves }
+  
+  return (
     <>
       <pokemonContext.Provider value={value}>
-      < Navbar />
-          {
-            matchWon ? <MatchWonComp /> : <Game />
+        < Navbar />
+        {
+          isLoading ? <LoaderComp /> : matchWon ? <MatchWonComp /> : <Game />
         }
       </pokemonContext.Provider>
     </>
     
   )
+
+  //   return (
+  //   <>
+  //     <pokemonContext.Provider value={value}>
+  //     < Navbar />
+  //     {
+  //       matchWon ? <MatchWonComp /> : <Game />
+  //     }
+  //     </pokemonContext.Provider>
+  //   </>
+    
+  // )
   
 }
 
